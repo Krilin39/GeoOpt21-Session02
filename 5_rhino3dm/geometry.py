@@ -18,3 +18,16 @@ def createRandomPoints(count,rX, rY):
         randomPts.append(random_pt)
 
     return randomPts
+
+
+def Linea_func(Lineas):
+    
+    _lns = []
+    for i in range(Lineas):
+
+       #ln = rg.Curve(Linea)
+
+        #add point to the list   random_pt
+       _lns.append( i)
+
+    return _lns

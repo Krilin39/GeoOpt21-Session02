@@ -1,3 +1,4 @@
+
 import rhino3dm as rg
 import networkx as nx
 import random
@@ -12,7 +13,7 @@ def addRandomWeigrhs(G):
     NG = nx.Graph()
     for u,v,data in G.edges(data=True):
         #w = data['weight'] if 'weight' in data else 1.0
-        w = random.randint(1,10)
+        w = random.randint(1,20)
         if NG.has_edge(u,v):
             NG[u][v]['weight'] += w
         else:
@@ -26,6 +27,8 @@ def getNodes(G, layout = 0):
     elif layout == 1 : lay =  nx.circular_layout(G)
     elif layout == 2 : lay =  nx.shell_layout(G)
     elif layout == 3 : lay =  nx.spiral_layout(G)
+    elif layout == 4 : lay =  nx.spring_layout(G)
+    elif layout == 5 : lay =  nx.spectral_layout(G)
     else: lay = nx.planar_layout(G)
 
     nodes = []
@@ -42,6 +45,8 @@ def getEdges(G, layout = 0):
     elif layout == 1 : lay =  nx.circular_layout(G)
     elif layout == 2 : lay =  nx.shell_layout(G)
     elif layout == 3 : lay =  nx.spiral_layout(G)
+    elif layout == 4 : lay =  nx.spring_layout(G)
+    elif layout == 5 : lay =  nx.spectral_layout(G)
     else: lay = nx.planar_layout(G)
 
     edges = []
@@ -53,7 +58,26 @@ def getEdges(G, layout = 0):
 
     return edges
 
+def setsphere(G, layout = 0):
 
+    if layout == 0 : lay =  nx.kamada_kawai_layout(G)
+    elif layout == 1 : lay =  nx.circular_layout(G)
+    elif layout == 2 : lay =  nx.shell_layout(G)
+    elif layout == 3 : lay =  nx.spiral_layout(G)
+    elif layout == 4 : lay =  nx.spring_layout(G)
+    elif layout == 5 : lay =  nx.spectral_layout(G)
+    else: lay = nx.planar_layout(G)
+
+    edges = []
+    for e in G.edges:
+        p1 = rg.Point3d( lay[e[0]][0], lay[e[0]][1], 0 )
+        p2 = rg.Point3d( lay[e[1]][0], lay[e[1]][1], 0 )
+        sph = rg.Sphere (p1,3)
+        sph2 = rg.Sphere (p2,3)
+        edges.append(sph)
+        edges.append(sph2)
+
+    return edges
 """
 G = createGridGraph(3,3)
 GW = addRandomWeigrhs(G)
