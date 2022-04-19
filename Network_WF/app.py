@@ -40,11 +40,11 @@ def createGraph(X, Y, layout):
 
 @hops.component(
     "/GH_graph",
-    name = " Convert Graph to NetworkX",
+    name = "GH_graph",
     inputs=[
-        hs.HopsPoint("Nodes", "N", "List of Nodes",hs.HopsParamAccess.LIST),
-        hs.HopsCurve("Edges", "E", "List of Edges", hs.HopsParamAccess.LIST),
-        hs.HopsInteger("Layout", "L", "Layout to order Nodes", hs.HopsParamAccess.ITEM, default= 5),
+        hs.HopsPoint("Nodes", "Nodes", "List of Nodes",hs.HopsParamAccess.LIST),
+        hs.HopsCurve("Edges", "Edges", "List of Edges", hs.HopsParamAccess.LIST),
+        hs.HopsInteger("Layout", "Type", "Layout to order Nodes", hs.HopsParamAccess.ITEM, default= 5),
         hs.HopsInteger("Scaler", "Scaler", "Scaler", hs.HopsParamAccess.ITEM, default= 5)
     ],
     outputs=[

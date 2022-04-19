@@ -27,6 +27,7 @@ def getNodes(scaler , G, layout = 0):
     elif layout == 1 : lay =  nx.circular_layout(G)
     elif layout == 2 : lay =  nx.shell_layout(G)
     elif layout == 3 : lay =  nx.spiral_layout(G)
+    
     elif layout == 4 : lay =  nx.spring_layout(G)
     elif layout == 5 : lay =  nx.spectral_layout(G)
     elif layout == 6 : lay =  nx.scale_free_graph(G)
@@ -49,6 +50,7 @@ def getEdges(scaler, G, layout = 0):
     elif layout == 1 : lay =  nx.circular_layout(G)
     elif layout == 2 : lay =  nx.shell_layout(G)
     elif layout == 3 : lay =  nx.spiral_layout(G)
+
     elif layout == 4 : lay =  nx.spring_layout(G)
     elif layout == 5 : lay =  nx.spectral_layout(G)
     elif layout == 6 : lay =  nx.scale_free_graph(G)
